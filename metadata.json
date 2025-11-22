@@ -1,0 +1,5 @@
+{
+  "name": "SOW Muncher - Compliance Agent",
+  "description": "AI-powered Statement of Work (SOW) review and compliance health check platform using Gemini 3.0 reasoning.",
+  "requestFramePermissions": []
+}
