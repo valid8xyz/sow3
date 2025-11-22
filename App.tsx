@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import FileUpload from './components/FileUpload';
 import Dashboard from './components/Dashboard';
@@ -7,6 +6,7 @@ import Login from './components/Login';
 import SOWRepository from './components/SOWRepository';
 import SOWBuilder from './components/SOWBuilder';
 import AdminSettings from './components/AdminSettings';
+import LiveAssistant from './components/LiveAssistant';
 import { analyzeSOW } from './services/geminiService';
 import { SOWAnalysisResult, SOWRecord } from './types';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -50,7 +50,7 @@ const MainContent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans relative">
       <Header currentView={currentView === 'DETAILS' ? 'REPO' : currentView} onNavigate={handleNavigate} />
       <main className="py-10 px-4">
         {error && <div className="max-w-2xl mx-auto mb-8 p-4 bg-red-50 text-red-700 rounded-lg">{error}</div>}
@@ -61,6 +61,7 @@ const MainContent = () => {
           !analysis ? <div className="flex items-center justify-center min-h-[60vh]"><FileUpload onUpload={handleUpload} isProcessing={isProcessing} /></div> : <Dashboard analysis={analysis} onReset={() => { setAnalysis(null); setCurrentView('NEW'); }} />
         )}
       </main>
+      <LiveAssistant />
     </div>
   );
 };
